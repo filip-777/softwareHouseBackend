@@ -11,3 +11,7 @@
 <p>
 
 <b>Database: </b><a>h2 provided by spring boot</a>
+
+## Basic application information
+This application is backend application for Software House recruitment task.
+This application is handling basic security and storing cars from frontend in database.
