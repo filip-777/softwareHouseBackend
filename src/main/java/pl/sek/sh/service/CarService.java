@@ -10,5 +10,6 @@ public interface CarService {
 
     ResponseEntity<HttpStatus> save(Car car);
     ResponseEntity<List<Car>> getAllCars();
+    ResponseEntity<HttpStatus> delete(Long id);
 
 }

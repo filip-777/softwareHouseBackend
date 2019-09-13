@@ -27,4 +27,9 @@ public class CarController {
         return carService.getAllCars();
     }
 
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<HttpStatus> deleteById(@PathVariable Long id){
+        return carService.delete(id);
+    }
+
 }

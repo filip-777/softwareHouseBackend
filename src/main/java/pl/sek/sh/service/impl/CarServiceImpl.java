@@ -11,6 +11,7 @@ import pl.sek.sh.service.CarService;
 
 import javax.validation.ConstraintViolationException;
 import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 @Service
@@ -39,6 +40,19 @@ public class CarServiceImpl implements CarService {
         } else {
             log.info("Sent list of all cars ... ");
             return new ResponseEntity<>(carRepository.findAll(), HttpStatus.OK);
+        }
+    }
+
+    @Override
+    public ResponseEntity<HttpStatus> delete(Long id) {
+        Optional<Car> carOptional = carRepository.findById(id);
+        if(carOptional.isPresent()){
+            log.info("Car was deleted: " + carOptional);
+            carRepository.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            log.info("There is no car in data base with id: " + id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
     }
 }
